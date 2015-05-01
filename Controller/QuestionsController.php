@@ -1,38 +1,18 @@
 <?php
 App::uses('AppController', 'Controller');
-/**
- * Questions Controller
- *
- * @property Question $Question
- * @property PaginatorComponent $Paginator
- */
+
 class QuestionsController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
 	public $components = array('Paginator');
 
-/**
- * index method
- *
- * @return void
- */
-	public function index() {
+
+	public function admin_index() {
 		$this->Question->recursive = 0;
 		$this->set('questions', $this->Paginator->paginate());
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
+
+	public function admin_view($id = null) {
 		if (!$this->Question->exists($id)) {
 			throw new NotFoundException(__('Invalid question'));
 		}
@@ -40,12 +20,8 @@ class QuestionsController extends AppController {
 		$this->set('question', $this->Question->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
-	public function add() {
+
+	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Question->create();
 			if ($this->Question->save($this->request->data)) {
@@ -55,16 +31,12 @@ class QuestionsController extends AppController {
 				$this->Session->setFlash(__('The question could not be saved. Please, try again.'));
 			}
 		}
+	
+		$this->render('admin_edit');
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function edit($id = null) {
+
+	public function admin_edit($id = null) {
 		if (!$this->Question->exists($id)) {
 			throw new NotFoundException(__('Invalid question'));
 		}
@@ -79,16 +51,12 @@ class QuestionsController extends AppController {
 			$options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
 			$this->request->data = $this->Question->find('first', $options);
 		}
+		$edit=1;
+		$this->set(compact('edit'));
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
+
+	public function admin_delete($id = null) {
 		$this->Question->id = $id;
 		if (!$this->Question->exists()) {
 			throw new NotFoundException(__('Invalid question'));

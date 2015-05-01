@@ -156,6 +156,8 @@
  *
  */
 	//Configure::write('Cache.disable', true);
+	
+	Configure::write('Routing.prefixes', array('admin'));
 
 /**
  * Enable cache checking.

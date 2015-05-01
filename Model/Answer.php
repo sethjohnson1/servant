@@ -22,6 +22,13 @@ class Answer extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Terminal' => array(
+			'className' => 'Terminal',
+			'foreignKey' => 'terminal_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 }

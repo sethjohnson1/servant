@@ -30,7 +30,7 @@
 		echo $this->Html->meta('icon');
 		
 		//add IF statement here for just admin functions
-		echo $this->Html->css('cake.generic');
+	//	echo $this->Html->css('cake.generic');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -51,13 +51,13 @@
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
 	  </div>
-	  
+	  <div class="jumbotron">
 			<?php echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
+	</div><!-- /jumbotron -->
       <!-- Site footer -->
       <footer class="footer">
-        <p>&copy; Company 2014</p>
       </footer>
 
     </div> <!-- /container -->
