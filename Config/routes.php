@@ -4,8 +4,12 @@
 
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	
-	//sj -added the terminal here, really we probably don't need a table then, just define here
+	//Router::connect('/admin/*', array('controller' => 'pages', 'action' => 'display'));
+	
+	//sj -added the terminal here, makes admin routing not work so well..
 	Router::connect('/:terminal/:controller/:action/*',array(),array());
+	
+	Router::connect('/{$prefix}/:controller/:action/*',array('admin'=>true),array());
 	
 	//example of defining our terminals, the key is the terminal name and the value is the ID of the default question (for rapid deployment of alternate questions and terminals)
 	$response_terminals=array(

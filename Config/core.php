@@ -157,6 +157,7 @@
  */
 	//Configure::write('Cache.disable', true);
 	
+	//this doesn't work so well with custom :terminal in route (surely there is a way but just doing it some other way 
 	Configure::write('Routing.prefixes', array('admin'));
 
 /**
