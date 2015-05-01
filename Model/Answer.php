@@ -23,12 +23,12 @@ class Answer extends AppModel {
 			'fields' => '',
 			'order' => ''
 		),
-		'Terminal' => array(
+		/*'Terminal' => array(
 			'className' => 'Terminal',
 			'foreignKey' => 'terminal_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		)*/
 	);
 }

@@ -16,17 +16,20 @@ create table answers(
 	created datetime,
 	modified datetime,
 	question_id int,
+	-- not using terminal_id but just a text value from the route
 	terminal_id int,
+	terminal_name varchar(200),
 	response varchar(200),
 	position int,
+	button_color varchar(20),
 	ip varchar(20),
 	email varchar(100),
 	first_name varchar(100),
 	last_name varchar(100),
 	zip varchar(40)
-	
 );
 
+-- this table isn't used at all, keeping around anyway
 drop table if exists terminals;
 create table terminals(
 	id int not null auto_increment,

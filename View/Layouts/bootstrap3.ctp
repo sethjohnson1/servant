@@ -9,7 +9,7 @@
 	
 
     <title>
-	basic CakePHP bootstrap
+	Center of the West Survey tool
 	</title>
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -21,7 +21,7 @@
 	
 	<!-- load my CSS after all the core BS stuff -->
 	
-	<link rel="stylesheet" href="sj.min.css">
+	<!--link rel="stylesheet" href="sj.min.css"-->
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
@@ -45,12 +45,25 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+<style>
+/* Q&D style overrides */
+body{
+	background-color:#766a62;
+}
+.jumbotron{
+	background-color:#f2f1ed;
+}
+.btn-lg{
+	font-size:38px;
+}
+</style>
 <body>
 	 <div class="container">
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
 	  </div>
+	  <br />
 	  <div class="jumbotron">
 			<?php echo $this->Session->flash(); ?>
 
@@ -64,7 +77,7 @@
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <!--script src="js/ie10-viewport-bug-workaround.js"></script-->
 	
 	<!-- menu for RWD -->
 	
