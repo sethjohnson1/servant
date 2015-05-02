@@ -5,6 +5,9 @@ class QuestionsController extends AppController {
 
 	public $components = array('Paginator');
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+	}
 
 	public function admin_index() {
 		$this->Question->recursive = 0;
@@ -12,12 +15,45 @@ class QuestionsController extends AppController {
 	}
 
 
+
 	public function admin_view($id = null) {
 		if (!$this->Question->exists($id)) {
 			throw new NotFoundException(__('Invalid question'));
 		}
 		$options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
-		$this->set('question', $this->Question->find('first', $options));
+		//$options['contain']=array('Answer'=>array('order'=>array('Answer.created')));
+		//$options['order']=array('Answer.created');
+		$options['recursive']=1;
+		$question=$this->Question->find('first', $options);
+		
+		//use tally as one big array
+		$tally=array();
+		//count responses
+		$responses=explode(',',$question['Question']['answers']);
+		foreach ($responses as $r){
+			$tally['responses'][$r]=$this->Question->Answer->find('count',array('conditions'=>array('Answer.response'=>$r,'Question.' . $this->Question->primaryKey => $id)));
+		}
+		//count colors
+		$colors=Configure::read('colors');
+		foreach ($colors as $c){
+			$tally['colors'][$c['name']]=$this->Question->Answer->find('count',array('conditions'=>array('Answer.button_color'=>$c['name'],'Question.' . $this->Question->primaryKey => $id)));
+		}
+		//count positions
+		$positions=count($responses);
+		for ($i=0; $i<$positions; $i++){
+			$tally['positions'][$i]=$this->Question->Answer->find('count',array('conditions'=>array('Answer.position'=>$i,'Question.' . $this->Question->primaryKey => $id)));
+		}
+		//grand total responses
+		$tally['total']=count($question['Answer']);
+		
+		//find length between first and last answer for "days running"
+		$now = new DateTime("2010-07-28 01:11:50");
+$ref = new DateTime("2010-07-30 05:56:40");
+$diff = $now->diff($ref);
+		debug($diff);
+		debug($tally);
+		
+		$this->set(compact('question'));
 	}
 
 
