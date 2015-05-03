@@ -11,7 +11,7 @@ create table questions(
 
 drop table if exists answers;
 create table answers(
-	id varchar(36) not null,
+	id int not null auto_increment,
 	primary key(id),
 	created datetime,
 	modified datetime,

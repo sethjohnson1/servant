@@ -21,7 +21,7 @@ class QuestionsController extends AppController {
 			throw new NotFoundException(__('Invalid question'));
 		}
 		$options = array('conditions' => array('Question.' . $this->Question->primaryKey => $id));
-		//$options['contain']=array('Answer'=>array('order'=>array('Answer.created')));
+		//$options['contain']=array('Answer'=>array('order'=>array('Answer.response')));
 		//$options['order']=array('Answer.created');
 		$options['recursive']=1;
 		$question=$this->Question->find('first', $options);
