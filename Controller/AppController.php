@@ -5,7 +5,7 @@ App::uses('Controller', 'Controller');
 
 class AppController extends Controller {
 
-	public $components = array('Session','DebugKit.Toolbar');
+	public $components = array('Session','DebugKit.Toolbar','Auth');
  
  	public function beforeFilter() {
 		parent::beforeFilter();
@@ -21,6 +21,8 @@ class AppController extends Controller {
 		);
 		shuffle($colors);
 		Configure::write('colors',$colors);
+		
+		if (Configure::read('enableAdminFunctions')==1) $this->Auth->allow();
 	}
  
 }
