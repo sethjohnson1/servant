@@ -44,6 +44,11 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<script type="text/javascript">
+$(window).load(function() {
+	$(".loader").fadeOut("slow");
+})
+</script>
   </head>
 <style>
 /* Q&D style overrides */
@@ -56,9 +61,21 @@ body{
 .btn-lg{
 	font-size:38px;
 }
+
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('<?=Configure::read('globalSiteURL')?>img/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
+}
 </style>
 <body>
+
 	 <div class="container">
+	 <div class="loader"></div>
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
