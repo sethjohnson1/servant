@@ -52,7 +52,7 @@ echo $this->Form->create('Answer',array('id'=>'form'.$question_id));
       timer= window.setTimeout(function(){window.location.href = "<?=$this->webroot.$term?>"},5000);
      $('.btn').click(function(evt) {
 
-		//$.blockUI({message:'<?=$this->Html->image('ajax-loader.gif')?>'}); 
+		$.blockUI({message:'<?=$this->Html->image('ajax-loader.gif')?>'}); 
         //$.blockUI({message:'<h1>Thank you</h1>'}); 	
 		//setTimeout($.unblockUI, 2000); 	
 		
@@ -74,7 +74,8 @@ echo $this->Form->create('Answer',array('id'=>'form'.$question_id));
 			timer= window.setTimeout(function(){window.location.href = "<?=$this->webroot.$term?>"},5000);
 			$(data).appendTo('#answers');
 		}
-			console.log(data);
+			//console.log(data);
+			$.unblockUI();
 		},
 		type:"POST",
 		url:"<? echo Configure::read('globalSiteURL'); ?>/answers/save/"+button_value+"/<?=$term?>"});
