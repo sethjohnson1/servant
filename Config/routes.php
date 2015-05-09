@@ -1,11 +1,14 @@
 <?php
-
+	//Router::parseExtensions('json');
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	
 	//Router::connect('/admin/*', array('controller' => 'pages', 'action' => 'display'));
 	
 	//sj - changed routes here, remember that order matters, so connect admin first
 	Router::connect( '/admin/:controller/:action/*', array('prefix' => 'admin', 'admin' => true));
+	
+	//sj - also connect save for AJAX save here..
+	Router::connect( '/answers/save/*', array('action'=>'save','admin'=>false,'controller'=>'answers'));
 	
 	Router::connect('/:terminal/:controller/:action/*',array(),array());
 	
@@ -24,6 +27,8 @@
 	}
 	
 	Router::redirect('/', array('terminal'=>'it_test','controller' => 'answers', 'action' => 'add', 1),array('status'=>'302'));
+	
+	
 
 
 	CakePlugin::routes();

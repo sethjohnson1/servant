@@ -27,6 +27,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
 
 	<?php
+		echo $this->Html->script('jquery.blockUI.js');	
 		echo $this->Html->meta('icon');
 		
 		//add IF statement here for just admin functions
@@ -46,7 +47,7 @@
     <![endif]-->
 	<script type="text/javascript">
 $(window).load(function() {
-	$(".loader").fadeOut("slow");
+	//$(".loader").fadeOut("slow");
 })
 </script>
   </head>
@@ -62,20 +63,10 @@ body{
 	font-size:38px;
 }
 
-.loader {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url('<?=Configure::read('globalSiteURL')?>img/page-loader.gif') 50% 50% no-repeat rgb(249,249,249);
-}
 </style>
 <body>
 
 	 <div class="container">
-	 <div class="loader"></div>
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
       <div class="masthead">
@@ -97,6 +88,12 @@ body{
     <!--script src="js/ie10-viewport-bug-workaround.js"></script-->
 	
 	<!-- menu for RWD -->
-	
+	<script type="text/javascript">   
+$(document).ready(function() {
+
+
+
+});  
+</script>  
   </body>
 </html>

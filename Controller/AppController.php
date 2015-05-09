@@ -6,6 +6,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
 	public $components = array('Session','DebugKit.Toolbar','Auth');
+	//public $viewClass = 'Json';
  
  	public function beforeFilter() {
 		parent::beforeFilter();
