@@ -71,7 +71,7 @@ echo $this->Form->create('Answer',array('id'=>'form'.$question_id));
 		else{
 			$ ("#form<?=$question_id?>").remove();
 			window.clearTimeout(timer);
-			timer= window.setTimeout(function(){window.location.href = "<?=$this->webroot.$term?>"},5000);
+			//timer= window.setTimeout(function(){window.location.href = "<?=$this->webroot.$term?>"},5000);
 			$(data).appendTo('#answers');
 		}
 			//console.log(data);
