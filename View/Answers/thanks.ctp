@@ -10,9 +10,5 @@
 <br />
 <?=$this->Html->link('No problem','/'.$this->request->params['terminal'],array('class'=>'btn btn-lg btn-primary btn-block','role'=>'button'))?>
 
-<script>
-$(document).ready(function() {
-    window.setTimeout(function(){window.location.href = "<?=$this->webroot.$this->request->params['terminal']?>"},5000);
-});
-</script>
+
 
