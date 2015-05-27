@@ -1,7 +1,53 @@
 <div class="questions view">
 <h2><?php echo __($question['Question']['name']); ?></h2>
-<?debug($question)?>
+
+<table>
+<thead>
+<tr>
+<th>Response</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+
+<?foreach ($tally['responses'] as $k=>$v):?>
+<tr><td><?=$k?></td><td><?=$v?></td></tr>
+<?endforeach?>
+<tr><td><b>Total</b></td><td><b><?=$tally['total']?></b></td></tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+
+<?foreach ($tally['colors'] as $k=>$v):?>
+<tr><td><?=$k?></td><td><?=$v?></td></tr>
+<?endforeach?>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody>
+
+<?foreach ($tally['positions'] as $k=>$v):?>
+<tr><td><?=$k?></td><td><?=$v?></td></tr>
+<?endforeach?>
+</tbody>
+</table>
 </div>
+<?//debug($tally)?>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>

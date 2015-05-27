@@ -3,29 +3,21 @@
 	<table cellpadding="0" cellspacing="0">
 	<thead>
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
-			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th><?php echo $this->Paginator->sort('question_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('terminal'); ?></th>
-			<th class="actions"><?php echo __('Actions'); ?></th>
+			<th><?php echo $this->Paginator->sort('response'); ?></th>
+			<th><?php echo $this->Paginator->sort('terminal_name'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
 	<?php foreach ($answers as $answer): ?>
 	<tr>
-		<td><?php echo h($answer['Answer']['id']); ?>&nbsp;</td>
 		<td><?php echo h($answer['Answer']['created']); ?>&nbsp;</td>
-		<td><?php echo h($answer['Answer']['modified']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($answer['Question']['name'], array('controller' => 'questions', 'action' => 'view', $answer['Question']['id'])); ?>
 		</td>
-		<td><?php echo h($answer['Answer']['terminal']); ?>&nbsp;</td>
-		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $answer['Answer']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $answer['Answer']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $answer['Answer']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $answer['Answer']['id']))); ?>
-		</td>
+		<td><?php echo h($answer['Answer']['response']); ?>&nbsp;</td>
+		<td><?php echo h($answer['Answer']['terminal_name']); ?>&nbsp;</td>
 	</tr>
 <?php endforeach; ?>
 	</tbody>

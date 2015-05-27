@@ -22,7 +22,6 @@
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $question['Question']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $question['Question']['id'])); ?>
-			<?php echo $this->Html->link(__('Answer'), array('admin'=>false,'controller'=>'answers','action' => 'add', $question['Question']['id'])); ?>
 			<?php // echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $question['Question']['id']), array('confirm' => __('Are you sure you want to delete # %s?', $question['Question']['id']))); ?>
 		</td>
 	</tr>

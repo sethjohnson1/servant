@@ -46,14 +46,11 @@ class QuestionsController extends AppController {
 		//grand total responses
 		$tally['total']=count($question['Answer']);
 		
-		//find length between first and last answer for "days running"
+		//find length between first and last answer for "days running" - ok this is interesting but not bothering for now
 		$now = new DateTime("2010-07-28 01:11:50");
-$ref = new DateTime("2010-07-30 05:56:40");
-$diff = $now->diff($ref);
-		debug($diff);
-		debug($tally);
-		
-		$this->set(compact('question'));
+		$ref = new DateTime("2010-07-30 05:56:40");
+		$diff = $now->diff($ref);
+		$this->set(compact('question','tally'));
 	}
 
 
