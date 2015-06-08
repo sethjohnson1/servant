@@ -49,7 +49,9 @@ echo $this->Form->create('Answer',array('id'=>'form'.$question_id));
        audio.play();
    };
    $(document).ready(function() {
-      timer= window.setTimeout(function(){window.location.href = "<?=$this->webroot.$term?>"},5000);
+      <? if (isset($set_timer)): ?>
+	  timer= window.setTimeout(function(){window.location.href = "<?=$this->webroot.$term?>"},5000);
+	  <? endif ?>
      $('.btn').click(function(evt) {
 
 		$.blockUI({message:'<?=$this->Html->image('ajax-loader.gif')?>'}); 
@@ -65,12 +67,12 @@ echo $this->Form->create('Answer',array('id'=>'form'.$question_id));
 		success:function (data, textStatus) {
 		if (data=='done'){
 			$('#answers').replaceWith('<h1>Thank you and enjoy your visit.</h1>');
-			window.clearTimeout(timer);
+			//window.clearTimeout(timer);
 			timer= window.setTimeout(function(){window.location.href = "<?=$this->webroot.$term?>"},1000);
 		}
 		else{
 			$ ("#form<?=$question_id?>").remove();
-			window.clearTimeout(timer);
+			//window.clearTimeout(timer);
 			//timer= window.setTimeout(function(){window.location.href = "<?=$this->webroot.$term?>"},5000);
 			$(data).appendTo('#answers');
 		}

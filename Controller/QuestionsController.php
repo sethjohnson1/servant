@@ -39,11 +39,17 @@ class QuestionsController extends AppController {
 		foreach ($colors as $c){
 			$tally['colors'][$c['name']]=$this->Question->Answer->find('count',array('conditions'=>array('Answer.button_color'=>$c['name'],'Question.' . $this->Question->primaryKey => $id)));
 		}
+		//count colors
+		$terminals=Configure::read('response_terminals');
+		foreach ($terminals as $t=>$v){
+			$tally['terminals'][$t]=$this->Question->Answer->find('count',array('conditions'=>array('Answer.terminal_name'=>$t,'Question.' . $this->Question->primaryKey => $id)));
+		}
 		//count positions
 		$positions=count($responses);
 		for ($i=0; $i<$positions; $i++){
 			$tally['positions'][$i]=$this->Question->Answer->find('count',array('conditions'=>array('Answer.position'=>$i,'Question.' . $this->Question->primaryKey => $id)));
 		}
+
 		//grand total responses
 		$tally['total']=count($question['Answer']);
 		
