@@ -20,7 +20,7 @@
 		$defaultterm=$terminal;
 	}
 	
-	Router::redirect('/', array('terminal'=>$defaultterm,'controller' => 'answers', 'action' => 'add', 1),array('status'=>'302'));
+	Router::redirect('/', array('terminal'=>$defaultterm,'controller' => 'answers', 'action' => 'add', Configure::read('defaultQuestion')),array('status'=>'302'));
 	
 	
 
