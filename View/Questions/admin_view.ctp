@@ -11,6 +11,7 @@
 <tbody>
 
 <?foreach ($tally['responses'] as $k=>$v):?>
+<?debug($k)?>
 <tr><td><?=$k?></td><td><?=$v?></td></tr>
 <?endforeach?>
 <tr><td><b>Total</b></td><td><b><?=$tally['total']?></b></td></tr>

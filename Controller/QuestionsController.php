@@ -30,9 +30,11 @@ class QuestionsController extends AppController {
 		$tally=array();
 		//count responses
 		$responses=explode(',',$question['Question']['answers']);
+		
+		//flaws counting here, don't explode!
 		foreach ($responses as $r){
-			$r=explode('_',$r);
-			$tally['responses'][$r[0]]=$this->Question->Answer->find('count',array('conditions'=>array('Answer.response'=>$r[0],'Question.' . $this->Question->primaryKey => $id)));
+			//$r=explode('_',$r);
+			$tally['responses'][$r]=$this->Question->Answer->find('count',array('conditions'=>array('Answer.response'=>$r,'Question.' . $this->Question->primaryKey => $id)));
 		}
 		//count colors
 		$colors=Configure::read('colors');

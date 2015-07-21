@@ -56,7 +56,9 @@ $question_id = int
 			$ans=explode(',',urldecode($button_value));
 			//remove underscore, later down check and go to next question if needed
 			$response=explode('_',$ans[1]);
-			$this->request->data['Answer']['response']=$response[0];
+			
+			//sj updated, need to keep parent id
+			$this->request->data['Answer']['response']=$ans[1];
 			$this->request->data['Answer']['position']=$ans[0];
 			$this->request->data['Answer']['ip']=$_SERVER['REMOTE_ADDR'];
 			
