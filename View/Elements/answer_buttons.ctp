@@ -50,7 +50,7 @@ echo $this->Form->create('Answer',array('id'=>'form'.$question_id));
    };
    $(document).ready(function() {
       <? if (isset($set_timer)): ?>
-	  timer= window.setTimeout(function(){window.location.href = "<?=$this->webroot.$term?>"},5000);
+	  timer= window.setTimeout(function(){window.location.href = "<?=$this->webroot.$term?>"},7000);
 	  <? endif ?>
      $('.btn').click(function(evt) {
 
