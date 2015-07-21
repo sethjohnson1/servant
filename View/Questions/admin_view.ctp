@@ -10,9 +10,12 @@
 </thead>
 <tbody>
 
-<?foreach ($tally['responses'] as $k=>$v):?>
-<?debug($k)?>
-<tr><td><?=$k?></td><td><?=$v?></td></tr>
+<?foreach ($tally['responses'] as $k=>$v):
+$k=explode('_',$k);
+if (isset($k[1])) $text=$this->Html->link($k[0],array('action'=>'view',$k[1]));
+else $text=$k[0];
+?>
+<tr><td><?=$text?></td><td><?=$v?></td></tr>
 <?endforeach?>
 <tr><td><b>Total</b></td><td><b><?=$tally['total']?></b></td></tr>
 </tbody>
