@@ -61,6 +61,15 @@ class QuestionsController extends AppController {
 		$diff = $now->diff($ref);
 		$this->set(compact('question','tally'));
 	}
+	
+	public function admin_export($questionid) {
+ 		$data = $this->Question->Answer->find('all',array('conditions'=>array('Answer.question_id'=>$questionid),'fields'=>array('Answer.created','Answer.response','Answer.terminal_name','Question.name')));
+		//debug($data);
+		$this->response->download($data[0]['Question']['name'].'-'.date('Y-m-d').".csv");
+		$this->set(compact('data'));
+ 		$this->layout = 'ajax';
+ 		return;
+ 	}
 
 
 	public function admin_add() {

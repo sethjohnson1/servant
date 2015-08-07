@@ -1,5 +1,6 @@
 <div class="questions view">
 <h2><?php echo __($question['Question']['name']); ?></h2>
+<p><?=$this->Html->link('export to CSV',array('action'=>'export',$question['Question']['id']))?></p>
 
 <table>
 <thead>
