@@ -6,18 +6,28 @@
 <tr>
 <th>Response</th>
 <th>Count</th>
+<th>Percentage</th>
 </tr>
 </thead>
 <tbody>
 
-<?foreach ($tally['responses'] as $k=>$v):
+<?
+$ptot=0;
+foreach ($tally['responses'] as $k=>$v):
 $k=explode('_',$k);
 if (isset($k[1])) $text=$this->Html->link($k[0],array('action'=>'view',$k[1]));
 else $text=$k[0];
 ?>
-<tr><td><?=$text?></td><td><?=$v?></td></tr>
+<tr><td><?=$text?></td><td><?=$v?></td><td>
+<?
+//find percent and total
+$percent=round(($v/$tally['total'])*100,1);
+echo $percent.'%';
+$ptot=$percent+$ptot;
+
+?></td></tr>
 <?endforeach?>
-<tr><td><b>Total</b></td><td><b><?=$tally['total']?></b></td></tr>
+<tr><td><b>Total</b></td><td><b><?=$tally['total']?></b></td><td><?=round($ptot)?>%</td></tr>
 </tbody>
 </table>
 
@@ -26,12 +36,16 @@ else $text=$k[0];
 <tr>
 <th>Color</th>
 <th>Count</th>
+<th>Percentage</th>
 </tr>
 </thead>
 <tbody>
 
-<?foreach ($tally['colors'] as $k=>$v):?>
-<tr><td><?=$k?></td><td><?=$v?></td></tr>
+<?
+$ptot=0;
+foreach ($tally['colors'] as $k=>$v):?>
+<tr><td><?=$k?></td><td><?=$v?></td><td><?=round(($v/$tally['total'])*100,1)?>%</td>
+</tr>
 <?endforeach?>
 </tbody>
 </table>
@@ -41,12 +55,13 @@ else $text=$k[0];
 <tr>
 <th>Position</th>
 <th>Count</th>
+<th>Percentage</th>
 </tr>
 </thead>
 <tbody>
 
 <?foreach ($tally['positions'] as $k=>$v):?>
-<tr><td><?=$k?></td><td><?=$v?></td></tr>
+<tr><td><?=$k?></td><td><?=$v?></td><td><?=round(($v/$tally['total'])*100,1)?>%</td></tr>
 <?endforeach?>
 </tbody>
 </table>
